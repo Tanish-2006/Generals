@@ -12,14 +12,18 @@ import numpy as np
 class ReplayBuffer:
     """Replay buffer for storing self-play game data."""
 
-    def __init__(self, save_dir="data/replay"):
+    def __init__(self, save_dir="data/replay", max_batches=None):
         """
         Initialize replay buffer.
 
         Args:
             save_dir: Directory to save replay data files
+            max_batches: Maximum number of batches to keep (None = keep all).
+                        If set, older batches will be deleted to prevent training
+                        on stale data from early weak iterations.
         """
         self.save_dir = save_dir
+        self.max_batches = max_batches
         os.makedirs(self.save_dir, exist_ok=True)
 
     def add_game(self, states, policies, values):
@@ -49,7 +53,26 @@ class ReplayBuffer:
             values=values
         )
         print(f"[ReplayBuffer] Saved → {path}")
+        
+        # Cleanup old batches if max_batches is set
+        if self.max_batches is not None:
+            self._cleanup_old_batches()
+        
         return path
+
+    def _cleanup_old_batches(self):
+        """Remove oldest batches if we exceed max_batches limit."""
+        files = sorted(
+            f for f in os.listdir(self.save_dir)
+            if f.endswith(".npz")
+        )
+        
+        if len(files) > self.max_batches:
+            num_to_delete = len(files) - self.max_batches
+            for f in files[:num_to_delete]:
+                path = os.path.join(self.save_dir, f)
+                os.remove(path)
+                print(f"[ReplayBuffer] Removed old batch: {f}")
 
     def load_all(self):
         """

@@ -24,6 +24,19 @@ class InferenceServer:
         if self._worker_task:
             await self._worker_task
 
+    def reload_model(self, checkpoint_path):
+        """
+        Reload model weights from a checkpoint file.
+        CRITICAL: Call this after each training iteration to update InferenceServer.
+        
+        Args:
+            checkpoint_path: Path to .pth checkpoint file
+        """
+        state_dict = torch.load(checkpoint_path, map_location=self.device, weights_only=False)
+        self.model.load_state_dict(state_dict)
+        self.model.eval()
+        print(f"[InferenceServer] ✓ Reloaded weights from {checkpoint_path}")
+
     async def predict(self, state):
         future = asyncio.Future()
         await self.queue.put((state, future))

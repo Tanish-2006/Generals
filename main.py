@@ -23,16 +23,16 @@ CHECKPOINT_DIR = PROJECT_ROOT / "data" / "checkpoints"
 REPLAY_DIR = PROJECT_ROOT / "data" / "replay"
 
 GAMES_PER_ITER = 32
-MCTS_SIMS_SELFPLAY = 25
+MCTS_SIMS_SELFPLAY = 100  # Increased from 25 for better quality targets
 TEMPERATURE_THRESHOLD = 10
 
 TRAIN_EPOCHS = 3
 BATCH_SIZE = 32
-LR = 1e-3
+LR = 5e-4  # Lowered from 1e-3 for more stable training
 WEIGHT_DECAY = 1e-4
 
-EVAL_GAMES = 4
-MCTS_SIMS_ARENA = 25
+EVAL_GAMES = 20  # Increased from 4 for more reliable win-rate estimates
+MCTS_SIMS_ARENA = 100  # Increased from 25 to match self-play quality
 ACCEPTANCE_THRESHOLD = 0.55
 
 SLEEP_BETWEEN_ITERS = 1.0
@@ -74,7 +74,7 @@ async def main_loop(max_iterations=None):
             shutil.copyfile(latest_path, old_path)
             print("[main] Created initial model_latest.pth and copied to model_old.pth")
 
-    replay = ReplayBuffer(save_dir=str(REPLAY_DIR))
+    replay = ReplayBuffer(save_dir=str(REPLAY_DIR), max_batches=20)  # Keep last 20 iterations
     trainer = Trainer(
         lr=LR,
         weight_decay=WEIGHT_DECAY,
@@ -119,6 +119,10 @@ async def main_loop(max_iterations=None):
             trainer.train(states_all, policies_all, values_all, save_name=save_name)
             latest_path, old_path = checkpoint_paths()
 
+            # CRITICAL: Reload InferenceServer with updated weights
+            print("[main] Reloading InferenceServer with new model weights...")
+            inference_server.reload_model(latest_path)
+
             print("[main] Evaluating new model vs previous model (Arena)")
             arena = Arena(
                 model_A_path=latest_path,
@@ -149,11 +153,13 @@ async def main_loop(max_iterations=None):
 
 if __name__ == "__main__":
     print("="*60)
-    print(" OPTIMIZED GENERALS RL TRAINING v2")
+    print(" OPTIMIZED GENERALS RL TRAINING v3 - FIXED")
     print("="*60)
     print(f" - Games per iteration: {GAMES_PER_ITER} (parallel)")
-    print(f" - MCTS simulations: {MCTS_SIMS_SELFPLAY} (balanced)")
+    print(f" - MCTS simulations: {MCTS_SIMS_SELFPLAY} (high quality)")
+    print(f" - Arena games: {EVAL_GAMES} (reliable evaluation)")
+    print(f" - Learning rate: {LR} (stable)")
     print(f" - Network: 196 channels, 7 res blocks")
-    print(f" - Intermediate rewards: Enabled")
+    print(f" - InferenceServer reload: ENABLED (CRITICAL FIX)")
     print("="*60)
     asyncio.run(main_loop(max_iterations=None))
