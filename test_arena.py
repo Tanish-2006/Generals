@@ -1,3 +1,5 @@
+"""Test script for Arena evaluation between two models."""
+
 from evaluate.evaluate import Arena
 
 arena = Arena(

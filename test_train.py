@@ -1,3 +1,5 @@
+"""Test script for trainer functionality."""
+
 from training.train import Trainer
 import numpy as np
 
