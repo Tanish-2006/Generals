@@ -11,8 +11,6 @@ class GeneralsEnv:
 
     ACTION_ID_TO_MOVE = {}
 
-    # Defined Garrison Locations: Player 1 (0,0), Player -1 (9,9)
-    # Using top-left (0,0) and bottom-right (9,9) as standard bases.
     GARRISON_LOCATIONS = {
         1: (0, 0),
         -1: (9, 9)
@@ -53,9 +51,6 @@ class GeneralsEnv:
 
     def reset(self):
         self.board = np.zeros((self.BOARD_SIZE, self.BOARD_SIZE), dtype=np.int32)
-        # Initialize Generals/Garrisons with default units to allow testing conversion
-        # We place 1 unit on each general to start, so movement is possible immediately?
-        # Standard Generals.io starts with 1 on General.
         self.board[0, 0] = 1
         self.board[9, 9] = -1
 
@@ -88,16 +83,8 @@ class GeneralsEnv:
         for action_id, move in self.ACTION_ID_TO_MOVE.items():
             if isinstance(move, tuple) and len(move) == 4:
                 fr, fc, tr, tc = move
-                # Basic validity: Must move own unit
-                # Only if board[fr][fc] has same sign as current_player
                 if np.sign(self.board[fr][fc]) == np.sign(self.current_player):
                     legal.append({"id": action_id})
-                elif self.board[fr][fc] == 0:
-                    # Previous behavior allowed moving 0s (ghost moves). 
-                    # We should probably disallow this to be accurate, 
-                    # but if we strictly want to support old tests we might need it.
-                    # Decision: Disallow moving 0s for accuracy.
-                    pass
 
         legal.append({"id": self.ACTION_GARRISON})
         legal.append({"id": self.ACTION_STALEMATE})
@@ -108,11 +95,7 @@ class GeneralsEnv:
         source_val = self.board[fr][fc]
         target_val = self.board[tr][tc]
         
-        # Determine Moving Unit (Source)
         moved_units = source_val
-        
-        # --- SPECIAL RULE: CONVERSION (GARRISON RULE) ---
-        # When a Defender unit (Active Moving Player) enters the Attacker’s (Enemy's) Garrison...
         
         enemy_player = -self.current_player
         is_enemy_garrison = False
@@ -122,44 +105,30 @@ class GeneralsEnv:
                 is_enemy_garrison = True
         
         if is_enemy_garrison:
-            # Check if there are enemy units to convert
             if target_val != 0 and np.sign(target_val) == np.sign(enemy_player):
-                # Convert 1 enemy unit:
-                # Enemy loses 1 (magnitude decreases)
                 if abs(target_val) > 0:
                     target_val -= np.sign(target_val) 
-                
-                    # Invader gains 1 (The converted unit joins the invasion force)
                     moved_units += np.sign(self.current_player)
 
-        # --- COMBAT LOGIC ---
-        # 0. If moved_units is 0 (shouldn't happen with legal actions check but good for safety)
         if moved_units == 0:
             self.board[fr][fc] = 0
             return
 
-        # 1. Empty Target: Just move
         if target_val == 0:
             self.board[tr][tc] = moved_units
         
-        # 2. Friendly Target: Merge
         elif np.sign(target_val) == np.sign(moved_units):
             self.board[tr][tc] = target_val + moved_units
             
-        # 3. Enemy Target: Combat
         else:
             diff = abs(moved_units) - abs(target_val)
             if diff > 0:
-                # Attacker wins
                 self.board[tr][tc] = np.sign(moved_units) * diff
             elif diff < 0:
-                # Defender wins
                 self.board[tr][tc] = np.sign(target_val) * abs(diff)
             else:
-                # Draw
                 self.board[tr][tc] = 0
 
-        # Source is emptied
         self.board[fr][fc] = 0
 
     def step(self, action_id):
@@ -175,11 +144,6 @@ class GeneralsEnv:
 
         elif 1 <= action_id < self.ACTION_GARRISON:
             fr, fc, tr, tc = self.ACTION_ID_TO_MOVE[action_id]
-            
-            # Check legality again? Or trust? 
-            # We trust action choice but should handle illegal moves gracefully if they slip through.
-            # Assuming legal.
-            
             self._apply_normal_move(fr, fc, tr, tc)
             reward = 0.001
 

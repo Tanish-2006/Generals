@@ -1,7 +1,3 @@
-"""
-AlphaZero-style training loop for Generals.io.
-"""
-
 import asyncio
 import os
 import shutil
@@ -16,36 +12,16 @@ from training.replay_buffer import ReplayBuffer
 from training.train import Trainer
 from evaluate.evaluate import Arena
 from utils.batched_inference import InferenceServer
-
-
-PROJECT_ROOT = Path(__file__).parent.resolve()
-CHECKPOINT_DIR = PROJECT_ROOT / "data" / "checkpoints"
-REPLAY_DIR = PROJECT_ROOT / "data" / "replay"
-
-GAMES_PER_ITER = 32
-MCTS_SIMS_SELFPLAY = 100  # Increased from 25 for better quality targets
-TEMPERATURE_THRESHOLD = 10
-
-TRAIN_EPOCHS = 3
-BATCH_SIZE = 32
-LR = 5e-4  # Lowered from 1e-3 for more stable training
-WEIGHT_DECAY = 1e-4
-
-EVAL_GAMES = 20  # Increased from 4 for more reliable win-rate estimates
-MCTS_SIMS_ARENA = 100  # Increased from 25 to match self-play quality
-ACCEPTANCE_THRESHOLD = 0.55
-
-SLEEP_BETWEEN_ITERS = 1.0
+from config import TRAINING, EVAL, PATHS
 
 
 def ensure_dirs():
-    CHECKPOINT_DIR.mkdir(parents=True, exist_ok=True)
-    REPLAY_DIR.mkdir(parents=True, exist_ok=True)
+    PATHS.ensure_dirs()
 
 
 def checkpoint_paths():
-    latest = CHECKPOINT_DIR / "model_latest.pth"
-    old = CHECKPOINT_DIR / "model_old.pth"
+    latest = PATHS.checkpoint_dir / "model_latest.pth"
+    old = PATHS.checkpoint_dir / "model_old.pth"
     return str(latest), str(old)
 
 
@@ -56,15 +32,15 @@ async def main_loop(max_iterations=None):
     if not os.path.exists(old_path):
         if os.path.exists(latest_path):
             shutil.copyfile(latest_path, old_path)
-            print(f"[main] model_old did not exist — copied model_latest -> model_old")
+            print(f"[main] model_old did not exist - copied model_latest -> model_old")
         else:
-            print("[main] No models found. Creating an initial dummy model (small train).")
+            print("[main] No models found. Creating an initial dummy model.")
             trainer0 = Trainer(
-                lr=LR,
-                weight_decay=WEIGHT_DECAY,
-                batch_size=BATCH_SIZE,
-                epochs=TRAIN_EPOCHS,
-                checkpoint_dir=str(CHECKPOINT_DIR)
+                lr=TRAINING.learning_rate,
+                weight_decay=TRAINING.weight_decay,
+                batch_size=TRAINING.batch_size,
+                epochs=TRAINING.train_epochs,
+                checkpoint_dir=str(PATHS.checkpoint_dir)
             )
             states = np.zeros((8, 17, 10, 10), dtype=np.float32)
             policies = np.zeros((8, 10003), dtype=np.float32)
@@ -74,13 +50,17 @@ async def main_loop(max_iterations=None):
             shutil.copyfile(latest_path, old_path)
             print("[main] Created initial model_latest.pth and copied to model_old.pth")
 
-    replay = ReplayBuffer(save_dir=str(REPLAY_DIR), max_batches=20)  # Keep last 20 iterations
+    replay = ReplayBuffer(
+        save_dir=str(PATHS.replay_dir),
+        max_batches=TRAINING.max_replay_batches
+    )
+    
     trainer = Trainer(
-        lr=LR,
-        weight_decay=WEIGHT_DECAY,
-        batch_size=BATCH_SIZE,
-        epochs=TRAIN_EPOCHS,
-        checkpoint_dir=str(CHECKPOINT_DIR)
+        lr=TRAINING.learning_rate,
+        weight_decay=TRAINING.weight_decay,
+        batch_size=TRAINING.batch_size,
+        epochs=TRAINING.train_epochs,
+        checkpoint_dir=str(PATHS.checkpoint_dir)
     )
 
     inference_server = InferenceServer(trainer.net, batch_size=32)
@@ -95,18 +75,18 @@ async def main_loop(max_iterations=None):
                 break
 
             print("\n" + "=" * 60)
-            print(f"[main] ITERATION {iteration} — self-play {GAMES_PER_ITER} games")
+            print(f"[main] ITERATION {iteration} - self-play {TRAINING.games_per_iter} games")
             print("=" * 60)
 
             sp = SelfPlay(
                 GeneralsEnv,
                 inference_server,
-                games_per_iteration=GAMES_PER_ITER,
-                mcts_simulations=MCTS_SIMS_SELFPLAY,
-                temperature_threshold=TEMPERATURE_THRESHOLD
+                games_per_iteration=TRAINING.games_per_iter,
+                mcts_simulations=TRAINING.mcts_simulations,
+                temperature_threshold=TRAINING.temperature_threshold
             )
 
-            print(f"[main] Generating {GAMES_PER_ITER} games concurrently...")
+            print(f"[main] Generating {TRAINING.games_per_iter} games concurrently...")
             states, policies, values = await sp.play_iteration()
             
             replay.add_game(states, policies, values)
@@ -115,11 +95,10 @@ async def main_loop(max_iterations=None):
             states_all, policies_all, values_all = replay.load_all()
 
             save_name = "model_latest.pth"
-            print(f"[main] Training for {TRAIN_EPOCHS} epochs ...")
+            print(f"[main] Training for {TRAINING.train_epochs} epochs...")
             trainer.train(states_all, policies_all, values_all, save_name=save_name)
             latest_path, old_path = checkpoint_paths()
 
-            # CRITICAL: Reload InferenceServer with updated weights
             print("[main] Reloading InferenceServer with new model weights...")
             inference_server.reload_model(latest_path)
 
@@ -127,23 +106,23 @@ async def main_loop(max_iterations=None):
             arena = Arena(
                 model_A_path=latest_path,
                 model_B_path=old_path,
-                games=EVAL_GAMES,
-                mcts_simulations=MCTS_SIMS_ARENA
+                games=EVAL.eval_games,
+                mcts_simulations=EVAL.mcts_simulations
             )
 
             win_rate = await arena.run()
             print(f"[main] Arena win rate for new model: {win_rate:.2f}")
 
-            if win_rate > ACCEPTANCE_THRESHOLD:
+            if win_rate > EVAL.acceptance_threshold:
                 print("[main] New model accepted! Copying model_latest -> model_old")
                 shutil.copyfile(latest_path, old_path)
             else:
                 print("[main] New model rejected. Keeping previous model_old.")
 
-            time.sleep(SLEEP_BETWEEN_ITERS)
+            time.sleep(1.0)
 
     except KeyboardInterrupt:
-        print("[main] KeyboardInterrupt — stopping training loop.")
+        print("[main] KeyboardInterrupt - stopping training loop.")
     except Exception as e:
         print(f"[main] Exception occurred: {e}")
         raise
@@ -152,14 +131,13 @@ async def main_loop(max_iterations=None):
 
 
 if __name__ == "__main__":
-    print("="*60)
-    print(" OPTIMIZED GENERALS RL TRAINING v3 - FIXED")
-    print("="*60)
-    print(f" - Games per iteration: {GAMES_PER_ITER} (parallel)")
-    print(f" - MCTS simulations: {MCTS_SIMS_SELFPLAY} (high quality)")
-    print(f" - Arena games: {EVAL_GAMES} (reliable evaluation)")
-    print(f" - Learning rate: {LR} (stable)")
+    print("=" * 60)
+    print(" GENERAL - Strategic Game AI Training System")
+    print("=" * 60)
+    print(f" - Games per iteration: {TRAINING.games_per_iter}")
+    print(f" - MCTS simulations: {TRAINING.mcts_simulations}")
+    print(f" - Arena games: {EVAL.eval_games}")
+    print(f" - Learning rate: {TRAINING.learning_rate}")
     print(f" - Network: 196 channels, 7 res blocks")
-    print(f" - InferenceServer reload: ENABLED (CRITICAL FIX)")
-    print("="*60)
+    print("=" * 60)
     asyncio.run(main_loop(max_iterations=None))
