@@ -27,7 +27,6 @@ def test_mcts_basic():
     print(f"MCTS action probs shape: {probs.shape}")
     print(f"Non-zero actions: {np.count_nonzero(probs)}")
     print("MCTS basic test: PASSED")
-    return True
 
 
 def test_mcts_action_selection():
@@ -40,18 +39,13 @@ def test_mcts_action_selection():
         await mcts.search(n_sims=20)
         return mcts.select_action(temperature=0, deterministic=True)
     
-    action = asyncio.run(run_and_select)
+    action = asyncio.run(run_and_select())
     
     legal_actions = [a["id"] for a in env.get_legal_actions()]
     
-    if action in legal_actions:
-        print(f"Selected action {action} is legal")
-        print("MCTS action selection test: PASSED")
-        return True
-    
-    print(f"Selected action {action} is NOT legal")
-    print("MCTS action selection test: FAILED")
-    return False
+    assert action in legal_actions, f"Selected action {action} is NOT legal"
+    print(f"Selected action {action} is legal")
+    print("MCTS action selection test: PASSED")
 
 
 if __name__ == "__main__":

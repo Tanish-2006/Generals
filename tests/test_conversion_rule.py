@@ -20,10 +20,8 @@ def test_conversion_rule():
         if m == move:
             action_id = aid
             break
-            
-    if action_id is None:
-        print("Error: Could not find action_id for move (8,9)->(9,9)")
-        return False
+    
+    assert action_id is not None, "Could not find action_id for move (8,9)->(9,9)"
         
     print(f"Testing Move (8,9)->(9,9) with P1(10) attacking P-1(10) in Garrison.")
     
@@ -33,15 +31,8 @@ def test_conversion_rule():
     result_val = env.board[9][9]
     print(f"Result Value at (9,9): {result_val}")
     
-    if result_val == 2:
-        print("SUCCESS: Conversion Rule applied correctly. (10 vs 10 -> +2)")
-        return True
-    elif result_val == 0:
-        print("FAILURE: Seems standard combat (10 vs 10 -> Draw) was applied. Conversion missed.")
-        return False
-    else:
-        print(f"FAILURE: Unexpected result {result_val}. Logic might be wrong.")
-        return False
+    assert result_val == 2, f"Conversion Rule failed. Expected 2, got {result_val}"
+    print("SUCCESS: Conversion Rule applied correctly. (10 vs 10 -> +2)")
 
 
 if __name__ == "__main__":

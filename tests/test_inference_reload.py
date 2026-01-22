@@ -43,9 +43,7 @@ def test_inference_server_reload():
     fingerprint2 = np.mean(weights2)
     print(f"[Test] Model 2 fingerprint ({param_name}): {fingerprint2:.6f}")
     
-    if abs(fingerprint1 - fingerprint2) < 1e-6:
-        print("\nERROR: Model weights are identical! Test setup failed.")
-        return False
+    assert abs(fingerprint1 - fingerprint2) >= 1e-6, "Model weights are identical! Test setup failed."
     print(f"[Test] Models are different (diff: {abs(fingerprint1 - fingerprint2):.6f})")
     
     print("\n" + "=" * 70)
@@ -58,9 +56,7 @@ def test_inference_server_reload():
     current_fingerprint = np.mean(current_weights)
     print(f"\n[Test] InferenceServer initial fingerprint: {current_fingerprint:.6f}")
     
-    if abs(current_fingerprint - fingerprint1) > 1e-6:
-        print("ERROR: InferenceServer doesn't match model1!")
-        return False
+    assert abs(current_fingerprint - fingerprint1) <= 1e-6, "InferenceServer doesn't match model1!"
     print("[Test] InferenceServer correctly loaded model1")
     
     print(f"\n[Test] Calling reload_model({checkpoint2})...")
@@ -70,12 +66,7 @@ def test_inference_server_reload():
     reloaded_fingerprint = np.mean(reloaded_weights)
     print(f"[Test] InferenceServer after reload fingerprint: {reloaded_fingerprint:.6f}")
     
-    if abs(reloaded_fingerprint - fingerprint2) > 1e-6:
-        print(f"\nCRITICAL ERROR: Reload failed!")
-        print(f"   Expected: {fingerprint2:.6f}")
-        print(f"   Got:      {reloaded_fingerprint:.6f}")
-        print(f"   Diff:     {abs(reloaded_fingerprint - fingerprint2):.6f}")
-        return False
+    assert abs(reloaded_fingerprint - fingerprint2) <= 1e-6, f"Reload failed! Expected: {fingerprint2:.6f}, Got: {reloaded_fingerprint:.6f}"
     
     print("\n" + "=" * 70)
     print("SUCCESS: InferenceServer reload works correctly!")
@@ -88,22 +79,10 @@ def test_inference_server_reload():
     checkpoint1.unlink()
     checkpoint2.unlink()
     print(f"\n[Test] Cleaned up temporary checkpoints")
-    
-    return True
 
 
 if __name__ == "__main__":
-    success = test_inference_server_reload()
-    
-    if success:
-        print("\n" + "=" * 70)
-        print("ALL TESTS PASSED - InferenceServer reload is working!")
-        print("You can now start training with confidence.")
-        print("=" * 70)
-        exit(0)
-    else:
-        print("\n" + "=" * 70)
-        print("TEST FAILED - InferenceServer reload is NOT working!")
-        print("DO NOT start training until this is fixed.")
-        print("=" * 70)
-        exit(1)
+    test_inference_server_reload()
+    print("\n" + "=" * 70)
+    print("ALL TESTS PASSED - InferenceServer reload is working!")
+    print("=" * 70)

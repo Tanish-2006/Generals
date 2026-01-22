@@ -16,18 +16,17 @@ def test_environment_basic():
     actions = env.get_legal_actions(env.dice_value)
     print(f"Legal actions count: {len(actions)}")
     
-    if len(actions) > 0:
-        action = actions[0]["id"]
-        print(f"Taking action: {action}")
-        
-        next_state, reward, done, info = env.step(action)
-        print(f"Next state shape: {next_state.shape}")
-        print(f"Reward: {reward}")
-        print(f"Game done: {done}")
-        return True
+    assert len(actions) > 0, "No legal actions found"
     
-    print("No legal actions found")
-    return False
+    action = actions[0]["id"]
+    print(f"Taking action: {action}")
+    
+    next_state, reward, done, info = env.step(action)
+    print(f"Next state shape: {next_state.shape}")
+    print(f"Reward: {reward}")
+    print(f"Game done: {done}")
+    
+    assert next_state.shape == (17, 10, 10)
 
 
 def test_state_save_restore():
@@ -43,12 +42,8 @@ def test_state_save_restore():
     
     env.restore_state(saved)
     
-    if (env.board == original_board).all():
-        print("State save/restore: PASSED")
-        return True
-    
-    print("State save/restore: FAILED")
-    return False
+    assert (env.board == original_board).all(), "State save/restore failed"
+    print("State save/restore: PASSED")
 
 
 if __name__ == "__main__":

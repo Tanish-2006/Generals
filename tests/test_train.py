@@ -17,9 +17,9 @@ def test_trainer():
     
     save_path = trainer.train(states, policies, values, save_name="test_model.pth")
     
+    assert save_path is not None
     print(f"Model saved to: {save_path}")
     print("Trainer test: PASSED")
-    return True
 
 
 if __name__ == "__main__":
