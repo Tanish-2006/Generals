@@ -3,6 +3,7 @@ import os
 import shutil
 import time
 
+import torch
 import numpy as np
 
 from env.generals_env import GeneralsEnv
@@ -28,31 +29,30 @@ async def main_loop(max_iterations=None):
     ensure_dirs()
     latest_path, old_path = checkpoint_paths()
 
-    if not os.path.exists(old_path):
-        if os.path.exists(latest_path):
-            shutil.copyfile(latest_path, old_path)
-            print("[main] model_old did not exist - copied model_latest -> model_old")
-        else:
-            print("[main] No models found. Creating an initial dummy model.")
-            trainer0 = Trainer(
-                lr=TRAINING.learning_rate,
-                weight_decay=TRAINING.weight_decay,
-                batch_size=TRAINING.batch_size,
-                epochs=TRAINING.train_epochs,
-                checkpoint_dir=str(PATHS.checkpoint_dir),
-            )
-            dummy_size = TRAINING.batch_size
-            states = np.zeros((dummy_size, 17, 10, 10), dtype=np.float32)
-            policies = np.zeros((dummy_size, 10003), dtype=np.float32)
-            policies[:, 0] = 1.0
-            values = np.zeros((dummy_size,), dtype=np.float32)
-            trainer0.train(states, policies, values, save_name="model_latest.pth")
-            shutil.copyfile(latest_path, old_path)
-            print("[main] Created initial model_latest.pth and copied to model_old.pth")
-
     replay = ReplayBuffer(
         save_dir=str(PATHS.replay_dir), max_batches=TRAINING.max_replay_batches
     )
+
+    files = [
+        f
+        for f in os.listdir(replay.save_dir)
+        if f.endswith(".npz") and f.startswith("batch_")
+    ]
+    if files:
+        batch_ids = []
+        for f in files:
+            try:
+                bid = int(f.replace("batch_", "").replace(".npz", ""))
+                batch_ids.append(bid)
+            except ValueError:
+                pass
+        start_iteration = max(batch_ids) if batch_ids else 0
+        print(
+            f"[main] Found {len(files)} replay batches. Resuming from iteration {start_iteration + 1}."
+        )
+    else:
+        start_iteration = 0
+        print("[main] No replay data found. Starting from iteration 1.")
 
     trainer = Trainer(
         lr=TRAINING.learning_rate,
@@ -62,11 +62,43 @@ async def main_loop(max_iterations=None):
         checkpoint_dir=str(PATHS.checkpoint_dir),
     )
 
+    latest_path, old_path = checkpoint_paths()
+    load_path = None
+
+    if os.path.exists(old_path):
+        load_path = old_path
+        print("[main] Resuming with Best Model (model_old.pth)")
+    elif os.path.exists(latest_path):
+        load_path = latest_path
+        print("[main] Resuming with Latest Model (model_latest.pth)")
+
+    if load_path:
+        try:
+            state_dict = torch.load(
+                load_path, map_location=trainer.device, weights_only=False
+            )
+            trainer.net.load_state_dict(state_dict)
+            print(f"[main] Successfully loaded model from {load_path}")
+        except Exception as e:
+            print(f"[main] Error loading model: {e}. Starting with fresh weights.")
+            load_path = None
+
+    if load_path is None and start_iteration == 0:
+        print("[main] No models found. Creating an initial dummy model.")
+        dummy_size = TRAINING.batch_size
+        states = np.zeros((dummy_size, 17, 10, 10), dtype=np.float32)
+        policies = np.zeros((dummy_size, 10003), dtype=np.float32)
+        policies[:, 0] = 1.0
+        values = np.zeros((dummy_size,), dtype=np.float32)
+        trainer.train(states, policies, values, save_name="model_latest.pth")
+        shutil.copyfile(latest_path, old_path)
+        print("[main] Created initial model_latest.pth and copied to model_old.pth")
+
     inference_batch = TRAINING.games_per_iter
     inference_server = InferenceServer(trainer.net, batch_size=inference_batch)
     await inference_server.start()
 
-    iteration = 0
+    iteration = start_iteration
     try:
         while True:
             iteration += 1
