@@ -1,7 +1,10 @@
 import math
 import numpy as np
 
+
 class TreeNode:
+    __slots__ = ("P", "N", "W", "Q", "children", "is_expanded")
+
     def __init__(self, prior=0.0):
         self.P = prior
         self.N = 0
@@ -74,7 +77,8 @@ class AsyncMCTS:
 
         counts = {a: node.N for a, node in self.root.children.items()}
         if deterministic or temperature == 0:
-            if not counts: return np.random.choice(self._root_legal_actions())
+            if not counts:
+                return np.random.choice(self._root_legal_actions())
             best = max(counts.items(), key=lambda kv: kv[1])[0]
             return best
 
@@ -95,7 +99,7 @@ class AsyncMCTS:
             if self.inference_server is not None:
                 state_tensor = env.encode_state(env.dice_value)
                 policy_logits, value = await self.inference_server.predict(state_tensor)
-                
+
                 if isinstance(policy_logits, np.ndarray):
                     logits = policy_logits
                 else:
@@ -110,7 +114,7 @@ class AsyncMCTS:
             elif self.net is not None:
                 state_tensor = env.encode_state(env.dice_value)
                 policy_logits, value = self.net.predict(state_tensor)
-                
+
                 if isinstance(policy_logits, np.ndarray):
                     logits = policy_logits
                 else:
@@ -124,7 +128,11 @@ class AsyncMCTS:
                     priors[aid] = float(probs_all[aid])
             else:
                 value = 0.0
-                priors = {aid: 1.0 / len(legal_ids) for aid in legal_ids} if legal_ids else {}
+                priors = (
+                    {aid: 1.0 / len(legal_ids) for aid in legal_ids}
+                    if legal_ids
+                    else {}
+                )
 
             node.expand(priors)
             return value

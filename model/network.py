@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import numpy as np
 
 
 class ResidualBlock(nn.Module):
@@ -29,9 +28,9 @@ class GeneralsNet(nn.Module):
         self.conv = nn.Conv2d(17, channels, kernel_size=3, padding=1)
         self.bn = nn.BatchNorm2d(channels)
 
-        self.res_layers = nn.ModuleList([
-            ResidualBlock(channels) for _ in range(num_res_blocks)
-        ])
+        self.res_layers = nn.ModuleList(
+            [ResidualBlock(channels) for _ in range(num_res_blocks)]
+        )
 
         self.policy_conv = nn.Conv2d(channels, 2, kernel_size=1)
         self.policy_bn = nn.BatchNorm2d(2)
@@ -64,14 +63,12 @@ class GeneralsNet(nn.Module):
 
         device = next(self.parameters()).device
 
-        state = torch.tensor(
-            state_numpy, dtype=torch.float32
-        ).unsqueeze(0).to(device)
+        state = torch.tensor(state_numpy, dtype=torch.float32).unsqueeze(0).to(device)
 
         with torch.no_grad():
             policy_logits, value = self.forward(state)
 
         policy_logits = policy_logits.squeeze(0).cpu().numpy()
-        value_scalar = float(value.squeeze(0).cpu().numpy())
+        value_scalar = value.item()
 
         return policy_logits, value_scalar

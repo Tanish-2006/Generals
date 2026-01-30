@@ -2,7 +2,6 @@ import asyncio
 import os
 import shutil
 import time
-from pathlib import Path
 
 import numpy as np
 
@@ -32,7 +31,7 @@ async def main_loop(max_iterations=None):
     if not os.path.exists(old_path):
         if os.path.exists(latest_path):
             shutil.copyfile(latest_path, old_path)
-            print(f"[main] model_old did not exist - copied model_latest -> model_old")
+            print("[main] model_old did not exist - copied model_latest -> model_old")
         else:
             print("[main] No models found. Creating an initial dummy model.")
             trainer0 = Trainer(
@@ -40,30 +39,31 @@ async def main_loop(max_iterations=None):
                 weight_decay=TRAINING.weight_decay,
                 batch_size=TRAINING.batch_size,
                 epochs=TRAINING.train_epochs,
-                checkpoint_dir=str(PATHS.checkpoint_dir)
+                checkpoint_dir=str(PATHS.checkpoint_dir),
             )
-            states = np.zeros((8, 17, 10, 10), dtype=np.float32)
-            policies = np.zeros((8, 10003), dtype=np.float32)
+            dummy_size = TRAINING.batch_size
+            states = np.zeros((dummy_size, 17, 10, 10), dtype=np.float32)
+            policies = np.zeros((dummy_size, 10003), dtype=np.float32)
             policies[:, 0] = 1.0
-            values = np.zeros((8,), dtype=np.float32)
+            values = np.zeros((dummy_size,), dtype=np.float32)
             trainer0.train(states, policies, values, save_name="model_latest.pth")
             shutil.copyfile(latest_path, old_path)
             print("[main] Created initial model_latest.pth and copied to model_old.pth")
 
     replay = ReplayBuffer(
-        save_dir=str(PATHS.replay_dir),
-        max_batches=TRAINING.max_replay_batches
+        save_dir=str(PATHS.replay_dir), max_batches=TRAINING.max_replay_batches
     )
-    
+
     trainer = Trainer(
         lr=TRAINING.learning_rate,
         weight_decay=TRAINING.weight_decay,
         batch_size=TRAINING.batch_size,
         epochs=TRAINING.train_epochs,
-        checkpoint_dir=str(PATHS.checkpoint_dir)
+        checkpoint_dir=str(PATHS.checkpoint_dir),
     )
 
-    inference_server = InferenceServer(trainer.net, batch_size=32)
+    inference_batch = TRAINING.games_per_iter
+    inference_server = InferenceServer(trainer.net, batch_size=inference_batch)
     await inference_server.start()
 
     iteration = 0
@@ -75,7 +75,9 @@ async def main_loop(max_iterations=None):
                 break
 
             print("\n" + "=" * 60)
-            print(f"[main] ITERATION {iteration} - self-play {TRAINING.games_per_iter} games")
+            print(
+                f"[main] ITERATION {iteration} - self-play {TRAINING.games_per_iter} games"
+            )
             print("=" * 60)
 
             sp = SelfPlay(
@@ -83,12 +85,12 @@ async def main_loop(max_iterations=None):
                 inference_server,
                 games_per_iteration=TRAINING.games_per_iter,
                 mcts_simulations=TRAINING.mcts_simulations,
-                temperature_threshold=TRAINING.temperature_threshold
+                temperature_threshold=TRAINING.temperature_threshold,
             )
 
             print(f"[main] Generating {TRAINING.games_per_iter} games concurrently...")
             states, policies, values = await sp.play_iteration()
-            
+
             replay.add_game(states, policies, values)
 
             print("[main] Loading replay data to train")
@@ -107,7 +109,7 @@ async def main_loop(max_iterations=None):
                 model_A_path=latest_path,
                 model_B_path=old_path,
                 games=EVAL.eval_games,
-                mcts_simulations=EVAL.mcts_simulations
+                mcts_simulations=EVAL.mcts_simulations,
             )
 
             win_rate = await arena.run()
@@ -138,6 +140,6 @@ if __name__ == "__main__":
     print(f" - MCTS simulations: {TRAINING.mcts_simulations}")
     print(f" - Arena games: {EVAL.eval_games}")
     print(f" - Learning rate: {TRAINING.learning_rate}")
-    print(f" - Network: 196 channels, 7 res blocks")
+    print(" - Network: 196 channels, 7 res blocks")
     print("=" * 60)
     asyncio.run(main_loop(max_iterations=None))
