@@ -42,13 +42,15 @@ class NetworkConfig:
 class TrainingConfig:
     games_per_iter: int = 16
     mcts_simulations: int = 50
-    temperature_threshold: int = 10
+    temperature_threshold: int = 15
     train_epochs: int = 3
     batch_size: int = field(default_factory=get_optimal_batch_size)
     num_workers: int = field(default_factory=get_optimal_workers)
-    learning_rate: float = 5e-4
+    learning_rate: float = 3e-4
     weight_decay: float = 1e-4
-    max_replay_batches: int = 20
+    max_replay_batches: int = 30
+    dirichlet_alpha: float = 0.2
+    dirichlet_epsilon: float = 0.25
 
 
 @dataclass(frozen=True)

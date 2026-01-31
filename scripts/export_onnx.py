@@ -8,8 +8,8 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from model.network import GeneralsNet
-from config import NETWORK
+from model.network import GeneralsNet  # noqa: E402
+from config import NETWORK  # noqa: E402
 
 
 def export_to_onnx(checkpoint_path, output_path, device="cpu"):

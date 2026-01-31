@@ -1,5 +1,6 @@
 import math
 import numpy as np
+from config import TRAINING
 
 
 class TreeNode:
@@ -136,6 +137,15 @@ class AsyncMCTS:
                     if legal_ids
                     else {}
                 )
+
+            if node is self.root and priors:
+                epsilon = TRAINING.dirichlet_epsilon
+
+                actions = list(priors.keys())
+                noise = np.random.dirichlet([TRAINING.dirichlet_alpha] * len(actions))
+
+                for i, a in enumerate(actions):
+                    priors[a] = (1 - epsilon) * priors[a] + epsilon * noise[i]
 
             node.expand(priors)
             return value
