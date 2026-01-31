@@ -501,7 +501,7 @@ class GeneralsEnv:
 
             # Handle STALEMATE: Auto-reroll if no legal moves
             # Keep rerolling until a legal move exists
-            max_rerolls = 100  # Safety limit
+            max_rerolls = 5  # Safety limit
             rerolls = 0
             while (
                 len(self._get_movement_legal_actions()) == 0 and rerolls < max_rerolls

@@ -30,7 +30,7 @@ class Arena:
 
     async def play_one_game(self, first_player="A"):
         env = GeneralsEnv()
-        state = env.reset()
+        _state = env.reset()
 
         while True:
             if (env.current_player == +1 and first_player == "A") or (
@@ -46,7 +46,7 @@ class Arena:
             action = mcts.select_action(temperature=0)
 
             next_state, reward, done, info = env.step(action)
-            state = next_state
+            _state = next_state
 
             if done:
                 # Winner is stored as player ID in env.winner

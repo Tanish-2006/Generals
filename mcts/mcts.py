@@ -78,7 +78,10 @@ class AsyncMCTS:
         counts = {a: node.N for a, node in self.root.children.items()}
         if deterministic or temperature == 0:
             if not counts:
-                return np.random.choice(self._root_legal_actions())
+                legal = self._root_legal_actions()
+                if not legal:
+                    return None
+                return np.random.choice(legal)
             best = max(counts.items(), key=lambda kv: kv[1])[0]
             return best
 

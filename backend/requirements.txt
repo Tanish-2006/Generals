@@ -8,4 +8,4 @@ pydantic-settings>=2.0.0
 python-multipart
 
 onnx>=1.14.0
-onnxruntime-gpu>=1.15.0
+onnxruntime==1.15.1

@@ -13,19 +13,14 @@ from config import NETWORK
 
 
 def export_to_onnx(checkpoint_path, output_path, device="cpu"):
-    """
-    Export PyTorch model to ONNX format.
-    """
     print(f"Loading model from {checkpoint_path}...")
 
-    # Initialize model
     model = GeneralsNet(
         action_dim=NETWORK.action_dim,
         channels=NETWORK.input_channels,
         num_res_blocks=NETWORK.num_res_blocks,
     )
 
-    # Load weights
     checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)
     if isinstance(checkpoint, dict) and "state_dict" in checkpoint:
         model.load_state_dict(checkpoint["state_dict"])
@@ -35,12 +30,10 @@ def export_to_onnx(checkpoint_path, output_path, device="cpu"):
     model.to(device)
     model.eval()
 
-    # Create dummy input with dynamic batch size
     dummy_input = torch.randn(
         1, NETWORK.input_channels, NETWORK.board_size, NETWORK.board_size
     ).to(device)
-
-    # Export
+    
     print(f"Exporting to {output_path}...")
 
     torch.onnx.export(
