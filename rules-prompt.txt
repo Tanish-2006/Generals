@@ -1,0 +1,193 @@
+# GENERALS GAME — COMPLETE RULE SET (10×10 BOARD)
+
+## 1. Board & Layout
+- The board is 10 × 10 (100 cells).
+- Each cell may contain a unit, be empty, be part of the General, or be part of a Moat.
+- The General:
+  - Occupies 4 central cells (2×2) in center.
+  - Always belongs to the Defender.
+- The Moat:
+  - Surrounds the General.
+  - Occupies 12 cells.
+  - Is impassable for all units.
+- Garrisons:
+  - Each player has two garrisons in the four corners.
+  - Each garrison consists of 6 fixed cells, 6 units
+  - Garrison ownership matters for special rules.
+
+## 2. Players, Roles & Colors
+- Two players: Player A and Player B.
+- Two roles: Attacker and Defender.
+- Game starts with a toss:
+  - Toss winner chooses Attacker or Defender.
+- Colors:
+  - One player is White, the other Black.
+  - Color is independent of role.
+- The General is always the Defender’s color.
+- The Attacker always takes the first turn.
+
+## 3. Initial Unit Placement
+- Each player starts with 12 units.
+- Units are placed exactly as per the official board layout:
+  - 6 units on the left side.
+  - 6 units on the right side.
+- Placement is symmetric for both players.
+- No unit starts in the Moat or General area.
+
+## 4. Dice Mechanism
+- Every turn begins with a dice roll (value from 1 to 6).
+- The dice value determines which unit can be selected and how far it may move.
+- Only one unit may be moved per turn.
+
+## 5. Legal Moves
+- A move consists of selecting one owned unit of that player and equal to dice value distance. if no valid move, STALEMATE occurs, player gets to dice again
+- Movement rules:
+  - A unit may move in **any direction** (orthogonal movement across the grid) as long as the path is clear.
+  - A unit **cannot cross or pass through another unit** (friendly or opponent).
+  - A unit **may enter and pass through Moat cells**.
+  - A unit **cannot enter, cross, or pass through the General cells** under any circumstance.
+  - A unit must remain within board boundaries.
+- Units cannot stack; only one unit may occupy a cell at any time.
+- If the destination cell contains an opponent unit, combat is resolved as per combat rules.
+
+## 6. Combat Rules
+- Standard combat:
+  - If a unit moves onto a cell occupied by an opponent unit, the opponent unit is **killed**.
+  - The moving unit occupies the destination cell.
+  - No unit count comparison occurs in normal combat.
+- Combat resolves immediately upon entering the occupied cell.
+- The General:
+  - Can only be attacked by the Attacker.
+  - Defender units cannot damage or destroy the General.
+
+## Special Moves and Special Board Rules
+
+### 1. Garrisoning
+
+- Garrisoning is a **special move**, distinct from garrison capture or conversion.
+- Garrisoning can be performed **only when a player rolls a dice value of exactly 6**.
+- When garrisoning is executed:
+  - The player may **select exactly one of their own units** currently placed in **any of their garrison cells**.
+  - That unit may be **moved to any empty, legal, non-garrison cell** on the board.
+- Constraints:
+  - The destination cell must be **empty**.
+  - The move must **not violate board rules** (cannot be inside the General, cannot overlap units).
+- Usage limitation:
+  - **Each player may perform garrisoning only once in the entire game**.
+- Purpose:
+  - Garrisoning exists to **create openings in defensive structures** and alter board dynamics.
+- Garrisoning:
+  - Does **not trigger combat**.
+  - Does **not convert units**.
+  - Does **not affect the General or Moat**.
+
+
+### 2. Offensive Special Move
+
+- The Offensive Special Move belongs to the **General**, not to normal units.
+- Preconditions:
+  - The number of **Defender units currently on the board must be fewer than 3**.
+  - The dice roll must be **exactly 1**.
+- When the conditions are met:
+  - The **General may eliminate exactly one Attacker unit**.
+  - The target Attacker unit must be located in **any Moat cell**.
+- Constraints:
+  - The General does **not move**.
+  - The General cannot attack units outside the Moat.
+  - No other units are affected.
+- Usage limitation:
+  - The General may perform **only one Offensive Special Move in the entire game**.
+- Outcome:
+  - The selected Attacker unit is **removed from the board immediately**.
+  - The turn then proceeds normally.
+
+
+### 3. Stalemate
+- A Stalemate occurs when the **active player has no legal moves** after a dice roll.
+- This can happen due to:
+  - All possible movement paths being **blocked by opponent units**.
+  - The dice roll being a **large value (typically 5 or 6)** that cannot be legally applied to any unit.
+- Stalemate resolution:
+  - The **active player is allowed to roll the die again**.
+  - The player continues to reroll **until at least one legal move becomes available**.
+- Constraints:
+  - The turn **does not end** during stalemate rerolls.
+  - The current player **does not change**.
+  - No units are moved during stalemate rerolls.
+- Stalemate does **not**:
+  - End the game.
+  - Count as a special move.
+  - Affect unit counts, General hits, or garrison usage.
+
+### 4. Moat Behavior (Final, Corrected)
+
+- The Moat consists of **12 fixed cells** surrounding the 4-cell General.
+- Moat cells are special terrain:
+  - Units **may enter and move through** Moat cells.
+  - Units **cannot cross or enter General cells** unless performing a valid General attack.
+  - Units **cannot stack** in Moat cells.
+  - Dice-based distance rules apply normally.
+
+#### Combat and General Interaction in the Moat
+
+- The Moat acts as a **defensive shield** for the General.
+
+##### Case 1: At least one Defender unit exists in the Moat
+- If an **Attacker attempts to hit the General**:
+  - A **Defender unit intercepts** the attack.
+  - Both the **Attacker unit and one Defender unit** are **removed from the board**.
+  - The **General takes no hit**.
+- If multiple Defender units are present in the Moat:
+  - The **Defender unit** is removed randomly
+- This interception happens **every time**, as long as **at least one Defender unit remains in the Moat**.
+
+##### Case 2: No Defender units in the Moat
+- An Attacker unit may legally attack the General.
+- A successful attack:
+  - Counts as **one General hit**.
+  - The attacking unit is **removed from the board**.
+- The General can only be damaged **when the Moat is completely empty of Defenders**.
+
+##### Moat-to-Moat Combat
+- An Attacker unit may:
+  - Remove and replace a Defender unit located in the Moat (same as normal combat) and vice versa
+- Such Moat combat:
+  - Removes the Defender unit
+  - Moves the Attacker unit into that Moat cell
+  - Causes **no General hit**
+
+
+### Defender entering Attacker garrison (Conversion Rule)
+- If exactly one attacker unit is present:
+  - That unit is converted into a defender unit.
+- If more than one attacker unit is present:
+  - Defender chooses one attacker unit to convert.
+- Conversion changes ownership permanently.
+- This can occur any number of times during the game.
+
+## 8. General & Win Conditions
+- The General has defined hit/health conditions.
+- If the Attacker successfully hits the General the 3 number of times:
+  - Attacker wins immediately.
+- If the General survives until the all the units of attacker exhausted:
+  - Defender wins.
+- Stalemate outcomes follow the official rules.
+
+## 9. Turn Progression
+- After each move:
+  - Turn switches to the other player.
+  - Dice is rolled again.
+- The game continues until an Attacker win, Defender win, is reached.
+
+## 10. Game Nature
+- The game is asymmetric and role-based.
+- Attacker and Defender have different objectives.
+- Value evaluation must be role-aware.
+
+## 11. Validation Note
+- Missing any of the following invalidates the environment:
+  - General and Moat mechanics
+  - Dice-constrained movement
+  - Correct garrison conversion rules
+  - Role asymmetry
+- An incomplete environment produces invalid self-play data and a wasted model.

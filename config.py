@@ -31,9 +31,9 @@ def get_optimal_batch_size():
 
 @dataclass(frozen=True)
 class NetworkConfig:
-    input_channels: int = 17
+    input_channels: int = 9
     board_size: int = 10
-    action_dim: int = 10003
+    action_dim: int = 10004
     hidden_channels: int = 196
     num_res_blocks: int = 7
 

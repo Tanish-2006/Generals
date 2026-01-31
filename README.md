@@ -147,8 +147,9 @@ The game environment implementing the Generals board game rules.
 
 **Specifications:**
 - Board Size: 10x10
-- Action Space: 10003 discrete actions
-- State Encoding: 17 channels of 10x10 spatial features
+- Action Space: 10004 discrete actions
+- State Encoding: 9 channels of 10x10 spatial features
+- Asymmetric Roles: Attacker vs Defender (determined by toss)
 
 **Key Methods:**
 - `reset()`: Initialize new game, return initial state
@@ -157,36 +158,41 @@ The game environment implementing the Generals board game rules.
 - `encode_state()`: Convert game state to neural network input
 - `save_state()` / `restore_state()`: State checkpointing for MCTS
 
-**State Encoding Format:**
+**State Encoding Format (9 Channels):**
 
 | Channel | Description |
-|---------|-------------|
-| 0 | Board state (signed unit counts) |
-| 1 | Reserved (terrain/obstacles) |
-| 2 | Normalized dice value |
-| 3-16 | Reserved for extensions |
+|---------|--------------|
+| 0 | My units (binary) |
+| 1 | Opponent units (binary) |
+| 2 | General location |
+| 3 | My role (1.0 if Attacker) |
+| 4 | Opponent role (1.0 if Attacker) |
+| 5 | Board ownership sign |
+| 6 | Dice value (normalized) |
+| 7 | General hits (normalized) |
+| 8 | Moat cells |
 
 ### GeneralsNet (model/network.py)
 
 Dual-head convolutional neural network for policy and value prediction.
 
 **Architecture:**
-- Input: 17 x 10 x 10 tensor
+- Input: 9 x 10 x 10 tensor
 - Backbone: 7 residual blocks with 196 channels
-- Policy Head: Outputs 10003 action logits
+- Policy Head: Outputs 10004 action logits
 - Value Head: Outputs scalar value in [-1, 1]
 
 **Parameter Count:** Approximately 8.5 million
 
 **Network Structure:**
 ```
-Input (17x10x10)
+Input (9x10x10)
     |
-Conv2d(17, 196) + BatchNorm + ReLU
+Conv2d(9, 196) + BatchNorm + ReLU
     |
 [ResidualBlock x 7]
     |
-    +---> Policy Head: Conv(196,2) + FC(200, 10003)
+    +---> Policy Head: Conv(196,2) + FC(200, 10004)
     |
     +---> Value Head: Conv(196,1) + FC(100, 64) + FC(64, 1) + Tanh
 ```
@@ -239,8 +245,8 @@ Manages storage and retrieval of training data.
 - Automatic cleanup of old batches
 
 **Data Format:**
-- `states`: float32 array of shape (N, 17, 10, 10)
-- `policies`: float32 array of shape (N, 10003)
+- `states`: float32 array of shape (N, 9, 10, 10)
+- `policies`: float32 array of shape (N, 10004)
 - `values`: float32 array of shape (N,)
 
 ### SelfPlay (selfplay/selfplay.py)
@@ -499,9 +505,9 @@ files.download("data/checkpoints/model_latest.pth")
 from config import NETWORK, TRAINING, EVAL, PATHS
 
 # Network configuration
-NETWORK.input_channels    # 17
+NETWORK.input_channels    # 9
 NETWORK.board_size        # 10
-NETWORK.action_dim        # 10003
+NETWORK.action_dim        # 10004
 NETWORK.hidden_channels   # 196
 NETWORK.num_res_blocks    # 7
 

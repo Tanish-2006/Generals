@@ -18,7 +18,7 @@ class MockModel(nn.Module):
 
     def forward(self, x):
         time.sleep(0.1)
-        return torch.randn(x.size(0), 10003), torch.randn(x.size(0), 1)
+        return torch.randn(x.size(0), 10004), torch.randn(x.size(0), 1)
 
 
 async def heartbeat(stop_event):

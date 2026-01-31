@@ -20,12 +20,12 @@ class ResidualBlock(nn.Module):
 
 
 class GeneralsNet(nn.Module):
-    def __init__(self, action_dim=10003, channels=196, num_res_blocks=7):
+    def __init__(self, action_dim=10004, channels=196, num_res_blocks=7):
         super().__init__()
 
         self.action_dim = action_dim
 
-        self.conv = nn.Conv2d(17, channels, kernel_size=3, padding=1)
+        self.conv = nn.Conv2d(9, channels, kernel_size=3, padding=1)
         self.bn = nn.BatchNorm2d(channels)
 
         self.res_layers = nn.ModuleList(

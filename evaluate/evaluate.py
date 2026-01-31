@@ -33,8 +33,9 @@ class Arena:
         state = env.reset()
 
         while True:
-            if (env.current_player == +1 and first_player == "A") or \
-               (env.current_player == -1 and first_player == "B"):
+            if (env.current_player == +1 and first_player == "A") or (
+                env.current_player == -1 and first_player == "B"
+            ):
                 net = self.model_A
             else:
                 net = self.model_B
@@ -48,12 +49,18 @@ class Arena:
             state = next_state
 
             if done:
-                if env.winner == +1 and first_player == "A":
-                    return "A"
-                if env.winner == -1 and first_player == "B":
-                    return "A"
+                # Winner is stored as player ID in env.winner
+                # Model A plays as the player assigned "first_player"
+                # Model B plays as the other player
+                if first_player == "A":
+                    model_A_player = +1
+                else:
+                    model_A_player = -1
 
-                return "B"
+                if env.winner == model_A_player:
+                    return "A"
+                else:
+                    return "B"
 
     async def run(self):
         A_wins = 0
@@ -68,7 +75,7 @@ class Arena:
             else:
                 B_wins += 1
 
-            print(f"Game {i+1}/{self.games} → Winner: {winner}")
+            print(f"Game {i + 1}/{self.games} → Winner: {winner}")
 
         print("\n=== Arena Results ===")
         print(f"Model A wins: {A_wins}")

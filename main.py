@@ -86,8 +86,8 @@ async def main_loop(max_iterations=None):
     if load_path is None and start_iteration == 0:
         print("[main] No models found. Creating an initial dummy model.")
         dummy_size = TRAINING.batch_size
-        states = np.zeros((dummy_size, 17, 10, 10), dtype=np.float32)
-        policies = np.zeros((dummy_size, 10003), dtype=np.float32)
+        states = np.zeros((dummy_size, 9, 10, 10), dtype=np.float32)
+        policies = np.zeros((dummy_size, 10004), dtype=np.float32)
         policies[:, 0] = 1.0
         values = np.zeros((dummy_size,), dtype=np.float32)
         trainer.train(states, policies, values, save_name="model_latest.pth")

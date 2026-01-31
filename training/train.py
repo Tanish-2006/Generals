@@ -25,7 +25,7 @@ class GenGameDataset(Dataset):
 class Trainer:
     def __init__(
         self,
-        action_dim=10003,
+        action_dim=10004,
         lr=1e-3,
         weight_decay=1e-4,
         batch_size=64,
