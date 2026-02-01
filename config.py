@@ -40,7 +40,7 @@ class NetworkConfig:
 
 @dataclass(frozen=True)
 class TrainingConfig:
-    games_per_iter: int = 16
+    games_per_iter: int = 32
     mcts_simulations: int = 75
     temperature_threshold: int = 15
     train_epochs: int = 3
@@ -51,6 +51,7 @@ class TrainingConfig:
     max_replay_batches: int = 30
     dirichlet_alpha: float = 0.2
     dirichlet_epsilon: float = 0.25
+    max_moves: int = 300
 
 
 @dataclass(frozen=True)

@@ -1,0 +1,1207 @@
+Game 5 Start. First Player: A
+
+Turn 0 | Player: -1 | Dice: 4
+Attacker: -1 | Defender: 1
+General Hits: 0
+---------------------
+ D D D . . . . D D D
+ D D . . . . . . D D
+ D . . . . . . . . D
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . . .
+ A . . . . . . . . A
+ A A . . . . . . A A
+ A A A . . . . A A A
+---------------------
+
+Action taken: 36 (Player -1)
+
+Turn 1 | Player: 1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . D . . . . D D D
+ D D . . . . . . D D
+ D . . . . . . . . D
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . . .
+ A . . . . . . . . A
+ A A . . . . . . A A
+ A A A . . . . A A A
+---------------------
+
+Action taken: 2593 (Player 1)
+
+Turn 2 | Player: -1 | Dice: 1
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . D . . . . D D D
+ D D . . . . . . D D
+ D . . . . . . . . D
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . . .
+ A . . . . . . . . A
+ A A . . . . . . A A
+ A A A . A . . . A A
+---------------------
+
+Action taken: 469 (Player -1)
+
+Turn 3 | Player: 1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . D . . . . D D D
+ D D . . . . . . D D
+ . D . . . . . . . D
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . . .
+ A . . . . . . . . A
+ A A . . . . . . A A
+ A A A . A . . . A A
+---------------------
+
+Action taken: 2207 (Player 1)
+
+Turn 4 | Player: -1 | Dice: 6
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . D . . . . D D D
+ D D . . . . . . D D
+ . D . . . . . . . D
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . .
+ . . . M M M M . . .
+ A . . . . . . . . A
+ A . . . . . . . A A
+ A A A . A . . . A A
+---------------------
+
+Action taken: 44 (Player -1)
+
+Turn 5 | Player: 1 | Dice: 5
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . D D D
+ D D . . . . . . D D
+ . D . . . . . . . D
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . .
+ . . D M M M M . . .
+ A . . . . . . . . A
+ A . . . . . . . A A
+ A A A . A . . . A A
+---------------------
+
+Action taken: 2181 (Player 1)
+
+Turn 6 | Player: -1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . D D D
+ D D . . . . . . D D
+ . D . . A . . . . D
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . .
+ . . D M M M M . . .
+ A . . . . . . . . .
+ A . . . . . . . A A
+ A A A . A . . . A A
+---------------------
+
+Action taken: 713 (Player -1)
+
+Turn 7 | Player: 1 | Dice: 5
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . D D D
+ D D . . . . . . D D
+ . D . . A . . . . .
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . D M M M M . . .
+ A . . . . . . . . .
+ A . . . . . . . A A
+ A A A . A . . . A A
+---------------------
+
+Action taken: 1933 (Player 1)
+
+Turn 8 | Player: -1 | Dice: 1
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . D D D
+ D D . . . . . . D D
+ . D . . A A . . . .
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . D M M M M . . .
+ . . . . . . . . . .
+ A . . . . . . . A A
+ A A A . A . . . A A
+---------------------
+
+Action taken: 419 (Player -1)
+
+Turn 9 | Player: 1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . D D D
+ D D . . . . . . . D
+ . D . . A A . . D .
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . D M M M M . . .
+ . . . . . . . . . .
+ A . . . . . . . A A
+ A A A . A . . . A A
+---------------------
+
+Action taken: 2443 (Player 1)
+
+Turn 10 | Player: -1 | Dice: 4
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . D D D
+ D D . . . . . . . D
+ . D . . A A . . D .
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . D A M M M . . .
+ . . . . . . . . . .
+ A . . . . . . . A A
+ . A A . A . . . A A
+---------------------
+
+Action taken: 195 (Player -1)
+
+Turn 11 | Player: 1 | Dice: 1
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . D . D
+ D D . . . . . . . D
+ . D . . A A . . D .
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . D M M M M . . .
+ . . . . . . . . . .
+ A . . . . . . . A A
+ . A A . A . . . A A
+---------------------
+
+Action taken: 587 (Player 1)
+
+Turn 12 | Player: -1 | Dice: 6
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . D . D
+ D D . . . . . . . D
+ . D . . . A . . D .
+ . . . A M M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . D M M M M . . .
+ . . . . . . . . . .
+ A . . . . . . . A A
+ . A A . A . . . A A
+---------------------
+
+Action taken: 162 (Player -1)
+
+Turn 13 | Player: 1 | Dice: 1
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . . . D
+ D D . . . . . . . D
+ . D . . . A . . D .
+ . . . A M M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . D M M M M D . .
+ . . . . . . . . . .
+ A . . . . . . . A A
+ . A A . A . . . A A
+---------------------
+
+Action taken: 617 (Player 1)
+
+Turn 14 | Player: -1 | Dice: 4
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . . . D
+ D D . . . . . . . D
+ . D . . . . . . D .
+ . . . A A M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . D M M M M D . .
+ . . . . . . . . . .
+ A . . . . . . . A A
+ . A A . A . . . A A
+---------------------
+
+Action taken: 495 (Player -1)
+
+Turn 15 | Player: 1 | Dice: 5
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . . . D
+ D D . . . . . . . D
+ . . . . . D . . D .
+ . . . A A M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . D M M M M D . .
+ . . . . . . . . . .
+ A . . . . . . . A A
+ . A A . A . . . A A
+---------------------
+
+Action taken: 2397 (Player 1)
+
+Turn 16 | Player: -1 | Dice: 2
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . . . D
+ D D . . . . . . . D
+ . . . . . D . . D .
+ . . . A A M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . D M M M M D . .
+ . . . . . . . . . .
+ A . . A . . . . . A
+ . A A . A . . . A A
+---------------------
+
+Action taken: 599 (Player -1)
+
+Turn 17 | Player: 1 | Dice: 5
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . . . D
+ D D . . . . . . . D
+ . . . . . . . . D .
+ . . . M A M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . D M M M M D . .
+ . . . . . . . . . .
+ A . . A . . . . . A
+ . A A . A . . . A A
+---------------------
+
+Action taken: 2257 (Player 1)
+
+Turn 18 | Player: -1 | Dice: 6
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . . . D
+ D D . . . . . . . D
+ . . . . . . . . D .
+ . . . A A M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . D M M M M D . .
+ . . . . . . . . . .
+ A . . . . . . . . A
+ . A A . A . . . A A
+---------------------
+
+Action taken: 210 (Player -1)
+
+Turn 19 | Player: 1 | Dice: 2
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . . .
+ D D . . . . . . . D
+ . . . . . . . . D .
+ . . . A A M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . D M M M M D . .
+ . . . . . . . . . .
+ A . . . . . . . . A
+ . A A . A . . . A A
+---------------------
+
+Action taken: 2410 (Player 1)
+
+Turn 20 | Player: -1 | Dice: 2
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . . .
+ D D . . . . . . . D
+ . . . . . . . . D .
+ . . . A A M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . D M M M M D . A
+ . . . . . . . . . .
+ A . . . . . . . . .
+ . A A . A . . . A A
+---------------------
+
+Action taken: 1692 (Player -1)
+
+Turn 21 | Player: 1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . . .
+ D D . . . . . . . D
+ . . . . . . . . D .
+ . . . A M M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . . M M M M D . A
+ . . . . . . . . . .
+ A . . . . . . . . .
+ . A A . A . . . A A
+---------------------
+
+Action taken: 2641 (Player 1)
+
+Turn 22 | Player: -1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . . .
+ D D . . . . . . . D
+ . . . . . . . . D .
+ . . . A M M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . . M M M A D . A
+ . . . . . . . . . .
+ A . . . . . . . . .
+ . A A . A . . . A .
+---------------------
+
+Action taken: 1861 (Player -1)
+
+Turn 23 | Player: 1 | Dice: 5
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . . .
+ D D . . . . . . . D
+ . . . . . . . . D .
+ . . . A M M M . . .
+ . . . M G G M . . .
+ . A . M G G M . . D
+ . . . M M M A . . A
+ . . . . . . . . . .
+ A . . . . . . . . .
+ . A A . D . . . A .
+---------------------
+
+Action taken: 2487 (Player 1)
+
+Turn 24 | Player: -1 | Dice: 1
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . . .
+ D D . . . . . . . D
+ . . . . . . . . D .
+ . . . A M M M . . .
+ . . . M G G M A . .
+ . A . M G G M . . D
+ . . . M M M A . . A
+ . . . . . . . . . .
+ A . . . . . . . . .
+ . A . . D . . . A .
+---------------------
+
+Action taken: 686 (Player -1)
+
+Turn 25 | Player: 1 | Dice: 1
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . . .
+ D D . . . . . . . D
+ . . . . . . . . . .
+ . . . A M M M . D .
+ . . . M G G M A . .
+ . A . M G G M . . D
+ . . . M M M A . . A
+ . . . . . . . . . .
+ A . . . . . . . . .
+ . A . . D . . . A .
+---------------------
+
+Action taken: 2619 (Player 1)
+
+Turn 26 | Player: -1 | Dice: 5
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . . .
+ D D . . . . . . . D
+ . . . . . . . . . .
+ . . . A M M M . D .
+ . . . M G G M A . .
+ . A . M G G M . . D
+ . . . M M M A . . A
+ . . . . . . . . . .
+ A . . . . . . . . .
+ . A . . D . . . . A
+---------------------
+
+Action taken: 222 (Player -1)
+
+Turn 27 | Player: 1 | Dice: 5
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . . .
+ . D . . . . . . . D
+ . . . . . . . . . .
+ . . . A M M M . D .
+ . . . M G G M A . .
+ . A . M G G M . . D
+ D . . M M M A . . A
+ . . . . . . . . . .
+ A . . . . . . . . .
+ . A . . D . . . . A
+---------------------
+
+Action taken: 2637 (Player 1)
+
+Turn 28 | Player: -1 | Dice: 2
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . . .
+ . D . . . . . . . D
+ . . . . . . . . . .
+ . . . A M M M . D .
+ . . . M G G M A . .
+ . A . M G G M . . D
+ D . . M M M A . . A
+ . . . . . . . . . .
+ A . . . . . . . . .
+ . A . . A . . . . .
+---------------------
+
+Action taken: 1618 (Player -1)
+
+Turn 29 | Player: 1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . . .
+ . D . . . . . . . D
+ . . . . . . . . . .
+ . . . A M M M . D .
+ . . . M G G M A . .
+ . A . M G G M . . .
+ D . . M M M A . . A
+ . . . . . . . D . .
+ A . . . . . . . . .
+ . A . . A . . . . .
+---------------------
+
+Action taken: 1354 (Player 1)
+
+Turn 30 | Player: -1 | Dice: 1
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . . .
+ . D . . . . . . . D
+ . . . . . . . . . .
+ . . . A M M M . D .
+ . . . M G G M A . .
+ . . . M G G M . . .
+ D . . M M M A . . A
+ . . . . . . . D . .
+ A A . . . . . . . .
+ . A . . A . . . . .
+---------------------
+
+Action taken: 454 (Player -1)
+
+Turn 31 | Player: 1 | Dice: 4
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . D .
+ . D . . . . . . . .
+ . . . . . . . . . .
+ . . . A M M M . D .
+ . . . M G G M A . .
+ . . . M G G M . . .
+ D . . M M M A . . A
+ . . . . . . . D . .
+ A A . . . . . . . .
+ . A . . A . . . . .
+---------------------
+
+Action taken: 1894 (Player 1)
+
+Turn 32 | Player: -1 | Dice: 6
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . A .
+ . D . . . . . . . .
+ . . . . . . . . . A
+ . . . A M M M . D .
+ . . . M G G M A . .
+ . . . M G G M . . .
+ D . . M M M A . . .
+ . . . . . . . D . .
+ A A . . . . . . . .
+ . A . . A . . . . .
+---------------------
+
+Action taken: 1635 (Player -1)
+
+Turn 33 | Player: 1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . A .
+ . D . . . . . . . .
+ . . . . . . . . . A
+ . . . A M M M . D .
+ . . . M G G M A . .
+ . . . M G G M . . .
+ . . . M M M D . . .
+ . . . . . . . D . .
+ A A . . . . . . . .
+ . A . . A . . . . .
+---------------------
+
+Action taken: 1248 (Player 1)
+
+Turn 34 | Player: -1 | Dice: 2
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . A .
+ . D . . . . . . . .
+ . . . . . . . . . A
+ . . . A M M M . D .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M D . . .
+ . . . . . . . A . .
+ A A . . . . . . . .
+ . A . . A . . . . .
+---------------------
+
+Action taken: 1817 (Player -1)
+
+Turn 35 | Player: 1 | Dice: 4
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . A .
+ . D . . . . . . . .
+ . . . . . . . . . A
+ . . . A M M M . D .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . D .
+ . . . . . . . A . .
+ A A . . . . . . . .
+ . A . . A . . . . .
+---------------------
+
+Action taken: 2188 (Player 1)
+
+Turn 36 | Player: -1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . A .
+ . D . . . . . . . .
+ . . . . . . . . . A
+ . . . A M M M . D .
+ A . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . D .
+ . . . . . . . A . .
+ . A . . . . . . . .
+ . A . . A . . . . .
+---------------------
+
+Action taken: 976 (Player -1)
+
+Turn 37 | Player: 1 | Dice: 6
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . D .
+ . D . . . . . . . .
+ . . . . . . . . . A
+ . . . A M M M . . .
+ A . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . D .
+ . . . . . . . A . .
+ . A . . . . . . . .
+ . A . . A . . . . .
+---------------------
+
+Action taken: 2123 (Player 1)
+
+Turn 38 | Player: -1 | Dice: 2
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . D . . . . D .
+ . D . . . . . . . .
+ . . . . . . . . . A
+ . . . A M M M . . .
+ A . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . D .
+ . A . . . . . . . .
+ . A . . . . . . . .
+ . A . . A . . . . .
+---------------------
+
+Action taken: 71 (Player -1)
+
+Turn 39 | Player: 1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . D . . D .
+ . D . . . . . . . .
+ . . . . . . . . . A
+ . . . A M M M . . .
+ A . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . D .
+ . A . . . . . . . .
+ . A . . . . . . . .
+ . A . . A . . . . .
+---------------------
+
+Action taken: 2463 (Player 1)
+
+Turn 40 | Player: -1 | Dice: 1
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . D . . D .
+ . D . . . . . . . .
+ . . . . . . . . . A
+ . . . A M M M . . .
+ A . . M G G M . . .
+ . . . M G G M . . .
+ . . . M A M M . D .
+ . A . . . . . . . .
+ . A . . . . . . . .
+ . . . . A . . . . .
+---------------------
+
+Action taken: 198 (Player -1)
+
+Turn 41 | Player: 1 | Dice: 5
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . D . . . .
+ . D . . . . . . . D
+ . . . . . . . . . A
+ . . . A M M M . . .
+ A . . M G G M . . .
+ . . . M G G M . . .
+ . . . M A M M . D .
+ . A . . . . . . . .
+ . A . . . . . . . .
+ . . . . A . . . . .
+---------------------
+
+Action taken: 1048 (Player 1)
+
+Turn 42 | Player: -1 | Dice: 1
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . D . . . .
+ . D . . . . . . . D
+ . . . . . . . . . A
+ . . . A M M M . . .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M A M M . D .
+ . A . . . . . . . .
+ . A . . . . . . . .
+ . . . . A A . . . .
+---------------------
+
+Action taken: 238 (Player -1)
+
+Turn 43 | Player: 1 | Dice: 4
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . D . . . .
+ . . . . . . . . . D
+ . D . . . . . . . A
+ . . . A M M M . . .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M A M M . D .
+ . A . . . . . . . .
+ . A . . . . . . . .
+ . . . . A A . . . .
+---------------------
+
+Action taken: 1751 (Player 1)
+
+Turn 44 | Player: -1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . D . . . .
+ . . . . . . . . . D
+ . D . . . . . . . A
+ . . . A M M M . . .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . A .
+ . A . . . . . . . .
+ . A . . . . . . . .
+ . . . . A A . . . .
+---------------------
+
+Action taken: 131 (Player -1)
+
+Turn 45 | Player: 1 | Dice: 1
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . . . .
+ . . . . . . . . . D
+ . D . . . . . . . A
+ . . . A M M M . D .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . A .
+ . A . . . . . . . .
+ . A . . . . . . . .
+ . . . . A A . . . .
+---------------------
+
+Action taken: 723 (Player 1)
+
+Turn 46 | Player: -1 | Dice: 4
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . . . .
+ . . . . . . . . A A
+ . D . . . . . . . .
+ . . . A M M M . D .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . A .
+ . A . . . . . . . .
+ . A . . . . . . . .
+ . . . . A A . . . .
+---------------------
+
+Action taken: 495 (Player -1)
+
+Turn 47 | Player: 1 | Dice: 1
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . . . .
+ . . . . . . . . A A
+ . . . . . D . . . .
+ . . . A M M M . D .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . A .
+ . A . . . . . . . .
+ . A . . . . . . . .
+ . . . . A A . . . .
+---------------------
+
+Action taken: 1945 (Player 1)
+
+Turn 48 | Player: -1 | Dice: 1
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . . . .
+ . . . . . . . . A A
+ . . . . . D . . . .
+ . . . A M M M . D .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . A .
+ A . . . . . . . . .
+ . A . . . . . . . .
+ . . . . A A . . . .
+---------------------
+
+Action taken: 598 (Player -1)
+
+Turn 49 | Player: 1 | Dice: 6
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ D . . . . . . . . .
+ . . . . . . . . A A
+ . . . . . . . . . .
+ . . . A M D M . D .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . A .
+ A . . . . . . . . .
+ . A . . . . . . . .
+ . . . . A A . . . .
+---------------------
+
+Action taken: 1920 (Player 1)
+
+Turn 50 | Player: -1 | Dice: 6
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . . . . . . . . .
+ A . . . . . . . A A
+ . . . . . . . . . .
+ . . . A M D M . D .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . A .
+ . . . . . . . . . .
+ . A . . . . . . . .
+ . . . . A A . . . .
+---------------------
+
+Action taken: 999 (Player -1)
+
+Turn 51 | Player: 1 | Dice: 6
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . . . . . . . . .
+ A . . . . . . . A A
+ . . . . . . . . . .
+ . . . A M D M . . .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . A .
+ . . . . . . . . . .
+ . A . . . . . . . .
+ . . D . A A . . . .
+---------------------
+
+Action taken: 430 (Player 1)
+
+Turn 52 | Player: -1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . . . . . . . . .
+ A . A . . . . . . A
+ . . . . . . . . . .
+ . . . A M D M . . .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . A .
+ . . . . . . . . . .
+ . A . . . . . . . .
+ . . D . A A . . . .
+---------------------
+
+Action taken: 898 (Player -1)
+
+Turn 53 | Player: 1 | Dice: 6
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . D . . . . . . .
+ A . A . . . . . . A
+ . . . . . . . . . .
+ . . . A M M M . . .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . A .
+ . . . . . . . . . .
+ . A . . . . . . . .
+ . . D . A A . . . .
+---------------------
+
+Action taken: 829 (Player 1)
+
+Turn 54 | Player: -1 | Dice: 2
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . D . . . . . . .
+ A . A . . . . . . A
+ . . . . . . . . . .
+ . . . M M M M . . A
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . A .
+ . . . . . . . . . .
+ . A . . . . . . . .
+ . . D . A A . . . .
+---------------------
+
+Action taken: 2476 (Player -1)
+
+Turn 55 | Player: 1 | Dice: 2
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . D . . . . . . .
+ A . A . . . . . . A
+ . . . . . . . . . .
+ . . . M M M M . . A
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . A .
+ . . . . . . . . . .
+ . A . . . . . . . .
+ . . . . D A . . . .
+---------------------
+
+Action taken: 2558 (Player 1)
+
+Turn 56 | Player: -1 | Dice: 6
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . D . . . . . . .
+ A . A . . . . . . A
+ . . . . . . . . . .
+ . . . M M M M . . A
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . A .
+ . . . . . . . A . .
+ . A . . . . . . . .
+ . . . . D . . . . .
+---------------------
+
+Action taken: 10001 (Player -1)
+
+Turn 57 | Player: 1 | Dice: 4
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . . . . . . . . .
+ A . A . . . . . . A
+ . . . . . . . . . .
+ . . . M M M M . . A
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . A .
+ . . . . . . . A D .
+ . A . . . . . . . .
+ . . . . D . . . . .
+---------------------
+
+Action taken: 264 (Player 1)
+
+Turn 58 | Player: -1 | Dice: 5
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . . . . . . . . .
+ A . . . . . . . . A
+ . . . . . . . . . .
+ . . . M M M M . . A
+ . . . M G G M . . .
+ . . A M G G M . . .
+ . . . M M M M . A .
+ . . . . . . . A D .
+ . A . . . . . . . .
+ . . . . D . . . . .
+---------------------
+
+Action taken: 2527 (Player -1)
+
+Turn 59 | Player: 1 | Dice: 1
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . . . . . . . . .
+ A . . . . . . . . A
+ . . . . . . . . . .
+ . . . M M M M . . A
+ . . . M G G M . . .
+ . . A M G G M . . .
+ . . . M M M M . A .
+ . . . . . . . A D .
+ . A . . . . . . . .
+ . . . . . . . . . D
+---------------------
+
+Action taken: 231 (Player 1)
+
+Turn 60 | Player: -1 | Dice: 5
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . . . . . . . . .
+ . . . . . . . . . A
+ . A . . . . . . . .
+ . . . M M M M . . A
+ . . . M G G M . . .
+ . . A M G G M . . .
+ . . . M M M M . A .
+ . . . . . . . A D .
+ . A . . . . . . . .
+ . . . . . . . . . D
+---------------------
+
+Action taken: 2631 (Player -1)
+
+Turn 61 | Player: 1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . . . . . . . . .
+ . . . . . . . . . A
+ . A . . . . . . . .
+ . . . M M M M . . A
+ . . . M G G M . . D
+ . . A M G G M . . .
+ . . . M M M M . A .
+ . . . . . . . A D .
+ . A . . . . . . . .
+ . . . . . . . . . .
+---------------------
+
+Action taken: 2215 (Player 1)
+
+Turn 62 | Player: -1 | Dice: 1
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . . . . . . . . .
+ . . . . . . . . . A
+ . A . . . . . . . .
+ . . . M M M M . . A
+ . . . M G G M . . D
+ . . A M G G M . . .
+ . . . M M M M . A .
+ . . . . . . . A D .
+ . . . . A . . . . .
+ . . . . . . . . . .
+---------------------
+
+Action taken: 1303 (Player -1)
+
+Turn 63 | Player: 1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . . . . . . . . .
+ . . . . . . . . . A
+ . A . . . . . . . .
+ . . . M M M M . . A
+ . . . M G G M . . .
+ . . A M G G M . . D
+ . . . M M M M . A .
+ . . . . . . . A D .
+ . . . . A . . . . .
+ . . . . . . . . . .
+---------------------
+
+Action taken: 2293 (Player 1)
+
+Turn 64 | Player: -1 | Dice: 3
+Attacker: -1 | Defender: 1
+General Hits: 1
+---------------------
+ A . . . . . . . . .
+ . . . . . . . . . A
+ . A . . . . . . . .
+ . . . M M M M . . A
+ . . . M G G M . . .
+ . . A M G G M . . D
+ . . . M M M M . A .
+ . . . . . . . A D .
+ . . . . . . . A . .
+ . . . . . . . . . .
+---------------------
+
+Action taken: 2155 (Player -1)
+
+Turn 65 | Player: 1 | Dice: 2
+Attacker: -1 | Defender: 1
+General Hits: 2
+---------------------
+ A . . . . . . . . .
+ . . . . . . . . . A
+ . A . . . . . . . .
+ . . . M M M M . . A
+ . . . M G G M . . .
+ . . A M G G M . . D
+ . . . M M M M . A .
+ . . . . . . . A . .
+ . . . . . . . A . .
+ . . . . . . . . . .
+---------------------
+
+Action taken: 1005 (Player -1)
+
+Turn 65 | Player: 1 | Dice: 2
+Attacker: -1 | Defender: 1
+General Hits: 2
+---------------------
+ A . . . . . . . . .
+ . . . . . . . . . A
+ . A . . . . . . . .
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . . A M G G M . . A
+ . . . M M M M . A .
+ . . . . . . . A . .
+ . . . . . . . A . .
+ . . . . . . . . . .
+---------------------
+
+Game Over. Winner: A

@@ -10,13 +10,15 @@ class SelfPlay:
         inference_server,
         games_per_iteration=1,
         mcts_simulations=100,
-        temperature_threshold=12
+        temperature_threshold=12,
+        max_moves=300,
     ):
         self.env_class = env_class
         self.inference_server = inference_server
         self.games_per_iteration = games_per_iteration
         self.mcts_simulations = mcts_simulations
         self.temperature_threshold = temperature_threshold
+        self.max_moves = max_moves
 
     async def play_iteration(self):
         tasks = [self.play_one_game() for _ in range(self.games_per_iteration)]
@@ -44,6 +46,10 @@ class SelfPlay:
         move_counter = 0
 
         while True:
+            if move_counter >= self.max_moves:
+                values = [0.0] * len(current_players)
+                return states, policies, values
+
             mcts = AsyncMCTS(env, inference_server=self.inference_server, c_puct=1.0)
             await mcts.search(n_sims=self.mcts_simulations)
 

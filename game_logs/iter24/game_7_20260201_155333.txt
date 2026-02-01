@@ -1,0 +1,145 @@
+Game 7 Start. First Player: A
+
+Turn 0 | Player: 1 | Dice: 4
+Attacker: 1 | Defender: -1
+General Hits: 0
+---------------------
+ A A A . . . . A A A
+ A A . . . . . . A A
+ A . . . . . . . . A
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . . .
+ D . . . . . . . . D
+ D D . . . . . . D D
+ D D D . . . . D D D
+---------------------
+
+Action taken: 234 (Player 1)
+
+Turn 1 | Player: -1 | Dice: 6
+Attacker: 1 | Defender: -1
+General Hits: 1
+---------------------
+ A A A . . . . A A A
+ . A . . . . . . A A
+ A . . . . . . . . A
+ . . . M M M M . . .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . . .
+ D . . . . . . . . D
+ D D . . . . . . D D
+ D D D . . . . D D D
+---------------------
+
+Action taken: 2488 (Player -1)
+
+Turn 2 | Player: 1 | Dice: 2
+Attacker: 1 | Defender: -1
+General Hits: 1
+---------------------
+ A A A . . . . A A A
+ . A . . . . . . A A
+ A . . . . . . . . A
+ . . . M M M M . D .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . . .
+ D . . . . . . . . D
+ D D . . . . . . D D
+ D D . . . . . D D D
+---------------------
+
+Action taken: 470 (Player 1)
+
+Turn 3 | Player: -1 | Dice: 6
+Attacker: 1 | Defender: -1
+General Hits: 1
+---------------------
+ A A A . . . . A A A
+ . A . . . . . . A A
+ . . A . . . . . . A
+ . . . M M M M . D .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . . .
+ D . . . . . . . . D
+ D D . . . . . . D D
+ D D . . . . . D D D
+---------------------
+
+Action taken: 2210 (Player -1)
+
+Turn 4 | Player: 1 | Dice: 4
+Attacker: 1 | Defender: -1
+General Hits: 1
+---------------------
+ A A A . . . . A A A
+ . A . . . . . . A A
+ . D A . . . . . . A
+ . . . M M M M . D .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . . .
+ D . . . . . . . . D
+ D . . . . . . . D D
+ D D . . . . . D D D
+---------------------
+
+Action taken: 36 (Player 1)
+
+Turn 5 | Player: -1 | Dice: 6
+Attacker: 1 | Defender: -1
+General Hits: 2
+---------------------
+ A . A . . . . A A A
+ . A . . . . . . A A
+ . D A . . . . . . A
+ . . . M M M M . D .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . . .
+ D . . . . . . . . D
+ D . . . . . . . D D
+ D D . . . . . D D D
+---------------------
+
+Action taken: 988 (Player -1)
+
+Turn 6 | Player: 1 | Dice: 3
+Attacker: 1 | Defender: -1
+General Hits: 2
+---------------------
+ A . A . . . . A A A
+ . A . . . . . . A A
+ . D A . . . . . . A
+ . . D M M M M . . .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . . .
+ D . . . . . . . . D
+ D . . . . . . . D D
+ D D . . . . . D D D
+---------------------
+
+Action taken: 436 (Player -1)
+
+Turn 6 | Player: 1 | Dice: 3
+Attacker: 1 | Defender: -1
+General Hits: 3
+---------------------
+ A . A . . . . A A A
+ . A . . . . . . . A
+ . D A . . . . . . A
+ . . D M M M M . . .
+ . . . M G G M . . .
+ . . . M G G M . . .
+ . . . M M M M . . .
+ D . . . . . . . . D
+ D . . . . . . . D D
+ D D . . . . . D D D
+---------------------
+
+Game Over. Winner: A

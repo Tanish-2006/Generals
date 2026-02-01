@@ -118,6 +118,7 @@ async def main_loop(max_iterations=None):
                 games_per_iteration=TRAINING.games_per_iter,
                 mcts_simulations=TRAINING.mcts_simulations,
                 temperature_threshold=TRAINING.temperature_threshold,
+                max_moves=TRAINING.max_moves,
             )
 
             print(f"[main] Generating {TRAINING.games_per_iter} games concurrently...")
