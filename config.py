@@ -41,7 +41,7 @@ class NetworkConfig:
 @dataclass(frozen=True)
 class TrainingConfig:
     games_per_iter: int = 16
-    mcts_simulations: int = 50
+    mcts_simulations: int = 75
     temperature_threshold: int = 15
     train_epochs: int = 3
     batch_size: int = field(default_factory=get_optimal_batch_size)
@@ -56,7 +56,7 @@ class TrainingConfig:
 @dataclass(frozen=True)
 class EvalConfig:
     eval_games: int = 10
-    mcts_simulations: int = 50
+    mcts_simulations: int = 75
     acceptance_threshold: float = 0.55
 
 

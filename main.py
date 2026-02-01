@@ -142,6 +142,7 @@ async def main_loop(max_iterations=None):
                 model_B_path=old_path,
                 games=EVAL.eval_games,
                 mcts_simulations=EVAL.mcts_simulations,
+                iteration=iteration,
             )
 
             win_rate = await arena.run()

@@ -17,11 +17,16 @@ class Arena:
         mcts_simulations=50,
         save_logs=True,
         log_dir="game_logs",
+        iteration=None,
     ):
         self.games = games
         self.mcts_simulations = mcts_simulations
         self.save_logs = save_logs
-        self.log_dir = log_dir
+
+        if iteration is not None:
+            self.log_dir = os.path.join(log_dir, f"iter{iteration}")
+        else:
+            self.log_dir = log_dir
 
         if self.save_logs:
             os.makedirs(self.log_dir, exist_ok=True)
